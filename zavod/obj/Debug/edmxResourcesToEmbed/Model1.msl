@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Database1ModelContainer" CdmEntityContainer="Database1Entities">
+    <EntitySetMapping Name="Obor">
+      <EntityTypeMapping TypeName="Database1Model.Obor">
+        <MappingFragment StoreEntitySet="Obor">
+          <ScalarProperty Name="Id_Obor" ColumnName="Id_Obor" />
+          <ScalarProperty Name="Naimen_Obor" ColumnName="Naimen_Obor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otdel">
+      <EntityTypeMapping TypeName="Database1Model.Otdel">
+        <MappingFragment StoreEntitySet="Otdel">
+          <ScalarProperty Name="Id_Otdela" ColumnName="Id_Otdela" />
+          <ScalarProperty Name="Nazvanie_Otdela" ColumnName="Nazvanie_Otdela" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sotr">
+      <EntityTypeMapping TypeName="Database1Model.Sotr">
+        <MappingFragment StoreEntitySet="Sotr">
+          <ScalarProperty Name="Id_sotr" ColumnName="Id_sotr" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yslyga">
+      <EntityTypeMapping TypeName="Database1Model.Yslyga">
+        <MappingFragment StoreEntitySet="Yslyga">
+          <ScalarProperty Name="Id_Yslygi" ColumnName="Id_Yslygi" />
+          <ScalarProperty Name="Id_Obor" ColumnName="Id_Obor" />
+          <ScalarProperty Name="Id_sotr" ColumnName="Id_sotr" />
+          <ScalarProperty Name="Id_Otdela" ColumnName="Id_Otdela" />
+          <ScalarProperty Name="Date_Yslygi" ColumnName="Date_Yslygi" />
+          <ScalarProperty Name="Name_Yslygi" ColumnName="Name_Yslygi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

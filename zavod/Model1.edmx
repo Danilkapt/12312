@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Database1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Obor">
+          <Key>
+            <PropertyRef Name="Id_Obor" />
+          </Key>
+          <Property Name="Id_Obor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naimen_Obor" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Otdel">
+          <Key>
+            <PropertyRef Name="Id_Otdela" />
+          </Key>
+          <Property Name="Id_Otdela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazvanie_Otdela" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sotr">
+          <Key>
+            <PropertyRef Name="Id_sotr" />
+          </Key>
+          <Property Name="Id_sotr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yslyga">
+          <Key>
+            <PropertyRef Name="Id_Yslygi" />
+          </Key>
+          <Property Name="Id_Yslygi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Obor" Type="int" Nullable="false" />
+          <Property Name="Id_sotr" Type="int" Nullable="false" />
+          <Property Name="Id_Otdela" Type="int" Nullable="false" />
+          <Property Name="Date_Yslygi" Type="date" Nullable="false" />
+          <Property Name="Name_Yslygi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Yslyga_Obor">
+          <End Role="Obor" Type="Self.Obor" Multiplicity="1" />
+          <End Role="Yslyga" Type="Self.Yslyga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Obor">
+              <PropertyRef Name="Id_Obor" />
+            </Principal>
+            <Dependent Role="Yslyga">
+              <PropertyRef Name="Id_Obor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yslyga_Otdel">
+          <End Role="Otdel" Type="Self.Otdel" Multiplicity="1" />
+          <End Role="Yslyga" Type="Self.Yslyga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdel">
+              <PropertyRef Name="Id_Otdela" />
+            </Principal>
+            <Dependent Role="Yslyga">
+              <PropertyRef Name="Id_Otdela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yslyga_Sotr">
+          <End Role="Sotr" Type="Self.Sotr" Multiplicity="1" />
+          <End Role="Yslyga" Type="Self.Yslyga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotr">
+              <PropertyRef Name="Id_sotr" />
+            </Principal>
+            <Dependent Role="Yslyga">
+              <PropertyRef Name="Id_sotr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Database1ModelContainer">
+          <EntitySet Name="Obor" EntityType="Self.Obor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Otdel" EntityType="Self.Otdel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotr" EntityType="Self.Sotr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yslyga" EntityType="Self.Yslyga" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Yslyga_Obor" Association="Self.FK_Yslyga_Obor">
+            <End Role="Obor" EntitySet="Obor" />
+            <End Role="Yslyga" EntitySet="Yslyga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yslyga_Otdel" Association="Self.FK_Yslyga_Otdel">
+            <End Role="Otdel" EntitySet="Otdel" />
+            <End Role="Yslyga" EntitySet="Yslyga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yslyga_Sotr" Association="Self.FK_Yslyga_Sotr">
+            <End Role="Sotr" EntitySet="Sotr" />
+            <End Role="Yslyga" EntitySet="Yslyga" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Obor">
+          <Key>
+            <PropertyRef Name="Id_Obor" />
+          </Key>
+          <Property Name="Id_Obor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naimen_Obor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Yslyga" Relationship="Self.FK_Yslyga_Obor" FromRole="Obor" ToRole="Yslyga" />
+        </EntityType>
+        <EntityType Name="Otdel">
+          <Key>
+            <PropertyRef Name="Id_Otdela" />
+          </Key>
+          <Property Name="Id_Otdela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazvanie_Otdela" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Yslyga" Relationship="Self.FK_Yslyga_Otdel" FromRole="Otdel" ToRole="Yslyga" />
+        </EntityType>
+        <EntityType Name="Sotr">
+          <Key>
+            <PropertyRef Name="Id_sotr" />
+          </Key>
+          <Property Name="Id_sotr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Yslyga" Relationship="Self.FK_Yslyga_Sotr" FromRole="Sotr" ToRole="Yslyga" />
+        </EntityType>
+        <EntityType Name="Yslyga">
+          <Key>
+            <PropertyRef Name="Id_Yslygi" />
+          </Key>
+          <Property Name="Id_Yslygi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Obor" Type="Int32" Nullable="false" />
+          <Property Name="Id_sotr" Type="Int32" Nullable="false" />
+          <Property Name="Id_Otdela" Type="Int32" Nullable="false" />
+          <Property Name="Date_Yslygi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Name_Yslygi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Obor" Relationship="Self.FK_Yslyga_Obor" FromRole="Yslyga" ToRole="Obor" />
+          <NavigationProperty Name="Otdel" Relationship="Self.FK_Yslyga_Otdel" FromRole="Yslyga" ToRole="Otdel" />
+          <NavigationProperty Name="Sotr" Relationship="Self.FK_Yslyga_Sotr" FromRole="Yslyga" ToRole="Sotr" />
+        </EntityType>
+        <Association Name="FK_Yslyga_Obor">
+          <End Role="Obor" Type="Self.Obor" Multiplicity="1" />
+          <End Role="Yslyga" Type="Self.Yslyga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Obor">
+              <PropertyRef Name="Id_Obor" />
+            </Principal>
+            <Dependent Role="Yslyga">
+              <PropertyRef Name="Id_Obor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yslyga_Otdel">
+          <End Role="Otdel" Type="Self.Otdel" Multiplicity="1" />
+          <End Role="Yslyga" Type="Self.Yslyga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdel">
+              <PropertyRef Name="Id_Otdela" />
+            </Principal>
+            <Dependent Role="Yslyga">
+              <PropertyRef Name="Id_Otdela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yslyga_Sotr">
+          <End Role="Sotr" Type="Self.Sotr" Multiplicity="1" />
+          <End Role="Yslyga" Type="Self.Yslyga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotr">
+              <PropertyRef Name="Id_sotr" />
+            </Principal>
+            <Dependent Role="Yslyga">
+              <PropertyRef Name="Id_sotr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Obor" EntityType="Self.Obor" />
+          <EntitySet Name="Otdel" EntityType="Self.Otdel" />
+          <EntitySet Name="Sotr" EntityType="Self.Sotr" />
+          <EntitySet Name="Yslyga" EntityType="Self.Yslyga" />
+          <AssociationSet Name="FK_Yslyga_Obor" Association="Self.FK_Yslyga_Obor">
+            <End Role="Obor" EntitySet="Obor" />
+            <End Role="Yslyga" EntitySet="Yslyga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yslyga_Otdel" Association="Self.FK_Yslyga_Otdel">
+            <End Role="Otdel" EntitySet="Otdel" />
+            <End Role="Yslyga" EntitySet="Yslyga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yslyga_Sotr" Association="Self.FK_Yslyga_Sotr">
+            <End Role="Sotr" EntitySet="Sotr" />
+            <End Role="Yslyga" EntitySet="Yslyga" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Database1ModelContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="Obor">
+            <EntityTypeMapping TypeName="Database1Model.Obor">
+              <MappingFragment StoreEntitySet="Obor">
+                <ScalarProperty Name="Id_Obor" ColumnName="Id_Obor" />
+                <ScalarProperty Name="Naimen_Obor" ColumnName="Naimen_Obor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Otdel">
+            <EntityTypeMapping TypeName="Database1Model.Otdel">
+              <MappingFragment StoreEntitySet="Otdel">
+                <ScalarProperty Name="Id_Otdela" ColumnName="Id_Otdela" />
+                <ScalarProperty Name="Nazvanie_Otdela" ColumnName="Nazvanie_Otdela" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotr">
+            <EntityTypeMapping TypeName="Database1Model.Sotr">
+              <MappingFragment StoreEntitySet="Sotr">
+                <ScalarProperty Name="Id_sotr" ColumnName="Id_sotr" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yslyga">
+            <EntityTypeMapping TypeName="Database1Model.Yslyga">
+              <MappingFragment StoreEntitySet="Yslyga">
+                <ScalarProperty Name="Id_Yslygi" ColumnName="Id_Yslygi" />
+                <ScalarProperty Name="Id_Obor" ColumnName="Id_Obor" />
+                <ScalarProperty Name="Id_sotr" ColumnName="Id_sotr" />
+                <ScalarProperty Name="Id_Otdela" ColumnName="Id_Otdela" />
+                <ScalarProperty Name="Date_Yslygi" ColumnName="Date_Yslygi" />
+                <ScalarProperty Name="Name_Yslygi" ColumnName="Name_Yslygi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
